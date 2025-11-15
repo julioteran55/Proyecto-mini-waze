@@ -94,3 +94,5 @@ class TablaHash:
         for slot in self.bins:
             if slot is not None and not slot.eliminado:
                 yield slot.clave, slot.valor
+
+    

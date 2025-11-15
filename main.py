@@ -2,6 +2,10 @@
 from Estructuras.Grafo import Grafo 
 from Algortimos.dijkstra import dijkstra
 from Algortimos.BFS import bfs
+from Algortimos.utils import reconstruir_camino
+from Algortimos.bellman_ford import bellman_ford
+
+
 #from graficarMapa import dibujar_grafo
 ciudad = Grafo()
 
@@ -24,3 +28,9 @@ print("Distancia:", distancia)
 #BFS, buscando el camino con menos saltos 
 camino_bfs = bfs(ciudad, "A", "E")
 print("Camino BFS:", camino_bfs)
+
+distancias_bf, padre_bf = bellman_ford(ciudad, "A")
+camino_bf = reconstruir_camino(padre_bf, "D")
+
+print("Bellman-Ford → Camino:", camino_bf)
+print("Bellman-Ford → Distancia:", distancias_bf["D"])
