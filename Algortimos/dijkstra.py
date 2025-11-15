@@ -1,69 +1,73 @@
+from Estructuras.MinHeap import MinHeap  #
+
 def dijkstra(grafo, inicio, destino):
 
-    # 1. Verificar que los nodos existan
+    # Validar existencia de nodos
     if grafo.vertices.buscar(inicio) is None:
-        print(f"El nodo {inicio} no existe en el grafo.")
+        print(f"El nodo {inicio} no existe.")
         return None, None
 
     if grafo.vertices.buscar(destino) is None:
-        print(f"El nodo {destino} no existe en el grafo.")
+        print(f"El nodo {destino} no existe.")
         return None, None
 
-    # 2. Inicializar distancias y padres
+    # === Inicialización ===
     distancias = {}
     padre = {}
 
-    for nombre, nodo in grafo.vertices.items():
+    # Inicializamos distancias en +∞
+    # (grafo.vertices.items() funciona porque tu TablaHash implementa .items())
+    for nombre, vertice in grafo.vertices.items():
         distancias[nombre] = float("inf")
         padre[nombre] = None
 
     distancias[inicio] = 0
 
-    # 3. Crear conjunto de visitados
+    # MinHeap: almacenará tuplas (distancia, nodo)
+    heap = MinHeap()
+    heap.insertar((0, inicio))
+
     visitados = set()
 
-    # 4. Bucle principal
-    while True:
+    # === Bucle principal usando MIN HEAP ===
+    while not heap.esta_vacio():
 
-        # Elegir el nodo no visitado con menor distancia
-        actual = None
-        menor_dist = float("inf")
+        # extraemos el nodo con menor distancia
+        dist_actual, actual = heap.extraer_min()
 
-        for nombre in distancias:
-            if nombre not in visitados and distancias[nombre] < menor_dist:
-                menor_dist = distancias[nombre]
-                actual = nombre
-
-        if actual is None:
-            break  # no quedan nodos accesibles
-
-        if actual == destino:
-            break  # llegamos al destino
+        # evitar procesar nodos repetidos
+        if actual in visitados:
+            continue
 
         visitados.add(actual)
 
-        # obtener el vértice real desde la tabla hash
-        vertice_actual = grafo.vertices.buscar(actual)
+        # si llegamos al destino, podemos terminar
+        if actual == destino:
+            break
 
-        # recorrer sus conexiones
-        for arista in vertice_actual.conexiones:
+        # obtener vértice real desde tabla hash
+        vertice_obj = grafo.vertices.buscar(actual)
+
+        # recorrer aristas (vecinos)
+        for arista in vertice_obj.conexiones:
             vecino = arista.destino
             peso = arista.distancia
 
             nueva_dist = distancias[actual] + peso
 
-            # relajación
+            # RELAJACIÓN
             if nueva_dist < distancias[vecino]:
                 distancias[vecino] = nueva_dist
                 padre[vecino] = actual
+                heap.insertar((nueva_dist, vecino))  # agregamos en heap
 
-    # Reconstruir camino
-    camino = []
-    nodo = destino
-
+    # === Reconstrucción del camino ===
     if distancias[destino] == float("inf"):
         return None, None
 
+    camino = []
+    nodo = destino
+    
     while nodo is not None:
         camino.insert(0, nodo)
         nodo = padre[nodo]

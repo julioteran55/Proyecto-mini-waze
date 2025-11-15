@@ -1,7 +1,7 @@
 """
 Simulación del mapa 
 -----------------------------------
-Objetivo: Construir manualmente un grafo dirigido o no dirigido
+Objetivo: Construir manualmente un grafo dirigido
 para representar las calles de una ciudad pequeña.
 """
 
