@@ -1,5 +1,5 @@
 from Estructuras.MinHeap import MinHeap  #
-
+from Eventos.eventos import obtener_distancia
 def dijkstra(grafo, inicio, destino):
 
     # Validar existencia de nodos
@@ -51,8 +51,9 @@ def dijkstra(grafo, inicio, destino):
         # recorrer aristas (vecinos)
         for arista in vertice_obj.conexiones:
             vecino = arista.destino
-            peso = arista.distancia
-
+            #antes
+            #peso = arista.distanciaS
+            peso = obtener_distancia(arista)
             nueva_dist = distancias[actual] + peso
 
             # RELAJACIÓN

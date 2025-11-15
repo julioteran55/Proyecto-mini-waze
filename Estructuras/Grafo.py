@@ -8,7 +8,8 @@ para representar las calles de una ciudad pequeña.
 from .HashTable import TablaHash
 
 class Arista:
-    def __init__(self, destino, distancia, bidireccional=False):
+    def __init__(self, origen, destino, distancia, bidireccional=False):
+        self.origen = origen
         self.destino = destino
         self.distancia = distancia
         self.bidireccional = bidireccional
@@ -19,12 +20,13 @@ class Vertice:
         self.conexiones = []  # lista de Aristas
 
     def agregar_conexion(self, destino, distancia, bidireccional=False):
-        arista = Arista(destino, distancia, bidireccional)
+        arista = Arista(self.nombre, destino, distancia, bidireccional)
         self.conexiones.append(arista)
 
 class Grafo:
     def __init__(self):
         self.vertices = TablaHash() # nombre → Vertice
+        #se uso hashTables
 
     def agregar_vertice(self, nombre):
         if self.vertices.buscar(nombre) is None:
