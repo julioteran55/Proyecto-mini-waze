@@ -1,6 +1,7 @@
 # archivo: main.py
 from Estructuras.Grafo import Grafo 
 from Algortimos.dijkstra import dijkstra
+from Algortimos.BFS import bfs
 #from graficarMapa import dibujar_grafo
 ciudad = Grafo()
 
@@ -20,3 +21,6 @@ print("Distancia:", distancia)
 #dibujar_grafo(ciudad)
 
 
+#BFS, buscando el camino con menos saltos 
+camino_bfs = bfs(ciudad, "A", "E")
+print("Camino BFS:", camino_bfs)
