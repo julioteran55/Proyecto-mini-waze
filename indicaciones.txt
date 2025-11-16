@@ -1,0 +1,22 @@
+Se realizo un grafo a partir de las calles de la Unviersidad de Lima teniendo en cuenta su distancia en metros
+
+Correr los archivos para probar los algoritmos : Prueba1.py , Prueba2.py y Prueba3.py
+
+Prueba 1:
+ Contiene 3 algoritmos para calcular la ruta más rapida 
+        - Bellman Ford
+        - Dijsktra
+        - BfS
+ Se comparó los resultados de ruta más rápida con google maps, coincidiendo en todas las pruebas y teniendo dsitancias parecidas.
+
+Prueba 2:
+    Se hallo la ruta más rapida con Dijsktra después de cierre de calles.
+    Se comparó la ruta antes de los eventos y después de los eventos.
+
+Prueba 3: 
+    Se hallo la ruta más rapida con Dijsktra después de aumentar tráfico o accidentes.
+    Se comparó la ruta antes de los eventos y después de los eventos.
+
+
+___>>> Las rutas rápidas sin tener en cuenta eventos (tráfico,accidentes o cierres de calles) coinciden con google maps.
+Esto comprueba la efectividad de nuestros algoritmos

@@ -5,20 +5,20 @@ from cargarDatos import cargar_grafo_desde_csv
 
 ciudad = cargar_grafo_desde_csv("calles.csv")
 
-camino, distancia = dijkstra(ciudad, "H1", "UL")
+camino, distancia = dijkstra(ciudad, "J1", "J")
 print("Camino:", camino)
 print("Distancia:", distancia)
 
-#cerramos calle
-cerrar_calle("B1","Z")
+#agregamos tráfico
+agregar_trafico("T","V","alto")
+#agregamos accidente
+agregar_accidente("V","W")
 
-print("Cerrar calle B1-> Z")
+print()
+print("Después de eventos:")
 #volvemos a imprimir
-camino, distancia = dijkstra(ciudad, "H1", "UL")
-
+camino, distancia = dijkstra(ciudad, "J1", "J")
+print()
 
 print("Camino:", camino)
 print("Distancia:", distancia)
-
-
-

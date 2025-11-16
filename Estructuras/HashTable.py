@@ -10,7 +10,7 @@ class Entrada:
 
 
 class TablaHash:
-    DEFAULT_SIZE = 6
+    DEFAULT_SIZE = 100
 
     def __init__(self, tamaño=DEFAULT_SIZE):
         self.tamaño = tamaño

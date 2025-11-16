@@ -1,9 +1,0 @@
-Para ahcer el mapa cargar los datos de un csv a al funcionq eu esta implementada, para ver emjor elg rafico y no solo como lsita usar la libreria:
-pip install graphviz
-pip install networkx matplotlib
-
-cambiar diccionarios por hastbables, y cambiar las listas normales por listas simples .
-
-Instalamos las librerias networkx y matplotlib , comando para que funcione el archivo : pip install -r requirements.txt
-
-puedes crear un etonro virtualy activarlo o descargar librerias para tu computadora local 

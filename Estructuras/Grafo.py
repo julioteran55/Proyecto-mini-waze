@@ -5,7 +5,7 @@ Objetivo: Construir manualmente un grafo dirigido
 para representar las calles de una ciudad pequeña.
 """
 
-from .HashTable import TablaHash
+from Estructuras.HashTable import TablaHash
 
 class Arista:
     def __init__(self, origen, destino, distancia, bidireccional=False):
