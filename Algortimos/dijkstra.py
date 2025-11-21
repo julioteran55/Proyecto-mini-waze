@@ -16,7 +16,6 @@ def dijkstra(grafo, inicio, destino):
     padre = {}
 
     # Inicializamos distancias en +∞
-    # (grafo.vertices.items() funciona porque tu TablaHash implementa .items())
     for nombre, vertice in grafo.vertices.items():
         distancias[nombre] = float("inf")
         padre[nombre] = None
